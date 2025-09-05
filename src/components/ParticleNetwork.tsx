@@ -43,7 +43,7 @@ export default function ParticleNetwork() {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 2 + 1,
-          color: '#ffffff',
+          color: 'rgba(204, 220, 255, 0.2)',
           speedX: (Math.random() - 0.5) * 0.5,
           speedY: (Math.random() - 0.5) * 0.5,
           connections: new Set(),
@@ -58,6 +58,39 @@ export default function ParticleNetwork() {
       const mouse = mouseRef.current;
 
       particles.forEach((particle, index) => {
+        // Calculate distance to mouse
+        const dxMouse = mouse.x - particle.x;
+        const dyMouse = mouse.y - particle.y;
+        const mouseDistance = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+        
+        // Add gravitational effect if within range
+        if (mouseDistance < 150) {
+          const force = 0.02; // Strength of gravitational pull
+          const angle = Math.atan2(dyMouse, dxMouse);
+          
+          // Apply gravitational force
+          particle.speedX += Math.cos(angle) * force;
+          particle.speedY += Math.sin(angle) * force;
+          
+          // Add some resistance to prevent particles from moving too fast
+          particle.speedX *= 0.98;
+          particle.speedY *= 0.98;
+        } else {
+          // When out of range, gradually return to random movement
+          const targetSpeed = 0.5; // Target speed for random movement
+          const currentSpeed = Math.sqrt(particle.speedX * particle.speedX + particle.speedY * particle.speedY);
+          
+          if (currentSpeed > targetSpeed) {
+            // Gradually reduce speed
+            particle.speedX *= 0.95;
+            particle.speedY *= 0.95;
+          } else {
+            // Add some random variation to direction
+            particle.speedX += (Math.random() - 0.5) * 0.1;
+            particle.speedY += (Math.random() - 0.5) * 0.1;
+          }
+        }
+
         // Move particles
         particle.x += particle.speedX;
         particle.y += particle.speedY;
@@ -83,12 +116,8 @@ export default function ParticleNetwork() {
         });
 
         // Connect to mouse if close enough
-        const dxMouse = mouse.x - particle.x;
-        const dyMouse = mouse.y - particle.y;
-        const mouseDistance = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
-        
-        if (mouseDistance < 200) { // Slightly larger radius for mouse connections
-          particle.connections.add(-1); // Use -1 to indicate mouse connection
+        if (mouseDistance < 200) {
+          particle.connections.add(-1);
         }
       });
     };
@@ -105,20 +134,32 @@ export default function ParticleNetwork() {
         // Draw connections to other particles
         particle.connections.forEach((connectionIndex) => {
           if (connectionIndex === -1) {
-            // Draw connection to mouse
+            // Draw curved connection to mouse
             const dx = mouse.x - particle.x;
             const dy = mouse.y - particle.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
             const opacity = 1 - (distance / 200);
 
+            // Calculate control point for curve
+            const midX = (particle.x + mouse.x) / 2;
+            const midY = (particle.y + mouse.y) / 2;
+            
+            // Create perpendicular offset for curve
+            const angle = Math.atan2(dy, dx);
+            const perpAngle = angle + Math.PI / 2;
+            const curveIntensity = Math.min(distance * 0.2, 50); // Adjust curve intensity based on distance
+            
+            const controlX = midX + Math.cos(perpAngle) * curveIntensity;
+            const controlY = midY + Math.sin(perpAngle) * curveIntensity;
+
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.45})`;
+            ctx.quadraticCurveTo(controlX, controlY, mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(204, 220, 255, ${opacity * 0.45})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           } else {
-            // Draw connections to other particles
+            // Draw curved connections to other particles
             const connectedParticle = particles[connectionIndex];
             const dx = connectedParticle.x - particle.x;
             const dy = connectedParticle.y - particle.y;
@@ -126,10 +167,22 @@ export default function ParticleNetwork() {
             
             const opacity = 1 - (distance / 150);
             
+            // Calculate control point for curve
+            const midX = (particle.x + connectedParticle.x) / 2;
+            const midY = (particle.y + connectedParticle.y) / 2;
+            
+            // Create perpendicular offset for curve
+            const angle = Math.atan2(dy, dx);
+            const perpAngle = angle + Math.PI / 2;
+            const curveIntensity = Math.min(distance * 0.15, 50); // Smaller curve for particle connections
+            
+            const controlX = midX + Math.cos(perpAngle) * curveIntensity;
+            const controlY = midY + Math.sin(perpAngle) * curveIntensity;
+            
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(connectedParticle.x, connectedParticle.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.35})`;
+            ctx.quadraticCurveTo(controlX, controlY, connectedParticle.x, connectedParticle.y);
+            ctx.strokeStyle = `rgba(204, 220, 255, ${opacity * 0.35})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -145,7 +198,7 @@ export default function ParticleNetwork() {
       // Draw mouse particle
       ctx.beginPath();
       ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.fillStyle = 'rgba(204, 220, 255, 0.4)';
       ctx.fill();
     };
 

@@ -1,6 +1,52 @@
+@import "tailwindcss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fonts are loaded via Next.js localFont in src/lib/fonts.ts */
+
+@theme {
+  /* Colors */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-red-500: #ef4444;
+  --color-brand-black: #00000D;
+  --color-brand-light-blue: #CCDCFF;
+  --color-pal-light-blue: #5F8EEF;
+  --color-pal-dark-blue: #1245AD;
+  
+  /* Font Families */
+  --font-family-markl: var(--font-markl), monospace;
+  --font-family-ethos: var(--font-ethos), sans-serif;
+  
+  /* Typography Scales */
+  --font-size-hero: 48px;
+  --line-height-hero: 60px;
+  --font-weight-hero: 700;
+  
+  /* Add your body text properties here */
+  --font-size-body: 16px;        /* Adjust to your needs */
+  --line-height-body: 24px;      /* Adjust to your needs */
+  --font-weight-body: 400;       /* Adjust to your needs */
+  --letter-spacing-body: 0.01em; /* Adjust to your needs */
+
+  /* Add your body text properties here */
+  --font-size-h2: 36px;        /* Adjust to your needs */
+  --line-height-h2: 125%;      /* Adjust to your needs */
+  --font-weight-h2: 500;       /* Adjust to your needs */
+  --letter-spacing-h2: 0.5%; /* Adjust to your needs */
+  
+  /* Spacing */
+  --spacing-122: 122px;
+  --spacing-2_5: 10px;
+  
+  /* Dimensions */
+  --width-500: 500px;
+  --width-1216: 1216px;
+  --height-500: 500px;
+  --max-width-1216: 1216px;
+}
 
 :root {
   --foreground-rgb: 255, 255, 255;
@@ -8,13 +54,23 @@
   --background-end-rgb: 0, 0, 0;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
-  min-height: 100vh;
-  overflow-x: hidden;
+@layer components {
+  
+  /* Hero text style (already partially defined in your theme) */
+  .text-hero {
+    font-family: var(--font-family-markl);
+    font-size: var(--font-size-hero);
+    line-height: var(--line-height-hero);
+    font-weight: var(--font-weight-hero);
+    font-feature-settings: "ss01";
+  }
+
+  .text-h2 {
+    font-family: var(--font-family-ethos);
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+    font-weight: var(--font-weight-h2);
+    letter-spacing: var(--letter-spacing-h2);
+  }
+
 }
