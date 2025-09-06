@@ -27,10 +27,10 @@ export default function Maintenance({ className = '' }: MaintenanceProps) {
         className="flex flex-col gap-10 text-brand-light-blue text-center text-hero"
         data-node-id="228:115"
       >
-        <p className="text-4xl leading-[60px]">
-          This page is taking a quick break <br /> while I fix things up.
+        <p className="text-2xl lg:text-4xl md:leading-[40px] lg:leading-[60px]">
+          This page is taking a quick break <br className="hidden md:block"/> while I fix things up.
         </p>
-        <p className="text-h2 text-2xl">
+        <p className="text-h2 text-xl lg:text-2xl">
           Back soon, and <span className="underline underline-offset-4">better</span>.
         </p>
       </div>
