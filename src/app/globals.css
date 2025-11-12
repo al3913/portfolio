@@ -73,4 +73,19 @@
     letter-spacing: var(--letter-spacing-h2);
   }
 
+  .typewriter{
+    white-space: nowrap; /* Prevents the text from wrapping since the size isn't full width*/
+    display: inline-block;
+    width: 0;
+    animation: typing 2.5s steps(20) 2s alternate infinite;
+  }
+
+  @keyframes typing {
+    0% { width: 0;}
+    10% { width: 0;}
+    80% { width: 9ch;}
+    100% { width: 9ch;}
+  }
+
 }
+
