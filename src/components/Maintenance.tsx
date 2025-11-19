@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 // Image asset from Figma
-const maintenanceImage = "/chibis/black_maintenance.png";
+const maintenanceImage = "/chibis/chibi-maintenance.png";
 
 interface MaintenanceProps {
   className?: string;

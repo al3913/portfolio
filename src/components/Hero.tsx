@@ -2,10 +2,13 @@
 
 import Image from 'next/image';
 import Cursor from './Cursor';
+import Typewriter from './Typewriter';
+
+const words = ["challenges", "frustrations", "painpoints"];
 
 export default function Hero() {
   return (
-    <div className="flex flex-col gap-[140px] items-start justify-center pb-0 pt-[315px] relative w-full min-h-screen bg-brand-black">
+    <div className="flex flex-col gap-[140px] items-start pb-0 pt-[315px] relative w-full h-auto bg-brand-black">
       {/* Headline Section */}
       <div className="relative w-full max-w-6xl">
         {/* Background highlight for "challenges" */}
@@ -16,17 +19,15 @@ export default function Hero() {
           <p className="mb-0">I build software by starting</p>
           <p>
             <span>with people, their </span>
-            <span className="text-brand-black text-hero relative bg-brand-light-blue typewriter ">
-              challenges
-            </span>
+            <Typewriter words={words}/>
           </p>
         </div>
       </div>
 
       {/* Body Section */}
-      <div className="relative w-full max-w-4xl">
+      <div className="relative w-full max-w-2xl">
         {/* Body text */}
-        <div className="font-ethos font-medium relative text-brand-light-blue text-[16px] md:text-[18px] lg:text-[20px] tracking-[0.2px] leading-[1.5] max-w-[589px]">
+        <div className="text-h2 font-medium relative text-brand-light-blue text-[16px] md:text-[18px] lg:text-[20px] tracking-[0.2px] leading-[1.5] max-w-[589px]">
           <p>
             The best software isn't just powerful, it feels like it was made for you. 
             I focus on understanding people first, then designing and building in a way 
@@ -35,22 +36,24 @@ export default function Hero() {
         </div>
         
         {/* Cursor component */}
-        <div className="h-[50px] mt-[40px] md:mt-[60px] lg:mt-[102px] relative w-[66.886px]">
-          <Cursor variant="Andy" />
+        <div className="absolute -bottom-8 md:right-25 lg:right-75">
+          <div className="h-[50px] relative w-[66.886px]">
+            <Cursor variant="Andy" />
+          </div>
         </div>
       </div>
 
       {/* Artwork Image */}
-      {/* <div className="absolute right-[60px] md:right-[120px] lg:left-[1042px] w-[200px] h-[200px] md:w-[250px] md:h-[250px] lg:w-[319px] lg:h-[319px] top-[259px]">
+      <div className="absolute right-[60px] md:right-[-45] w-[200px] h-[200px] md:w-[250px] md:h-[250px] lg:w-[319px] lg:h-[319px] top-[30%]">
         <Image
-          src="/chibis/black_left.png"
+          src="/chibis/chibi-left.png"
           alt="Character artwork"
-          width={319}
-          height={319}
+          width={400}
+          height={400}
           className="w-full h-full object-cover"
           priority
         />
-      </div> */}
+      </div>
     </div>
   );
 }
