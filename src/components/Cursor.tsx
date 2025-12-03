@@ -1,13 +1,13 @@
 'use client';
 
 // SVG assets from Figma design
-const imgVector1 = "http://localhost:3845/assets/1f7306d76a786d73b14e3990482004b0667b052a.svg";
-const imgVector2 = "http://localhost:3845/assets/3f216635acf91e0e970554751d27239442f356cf.svg";
-const imgVector3 = "http://localhost:3845/assets/62cdc82044f768ca8c359e0a20e8c710a404927d.svg";
-const imgVector4 = "http://localhost:3845/assets/b8411917756e285444b89f0f17eb2931b754f45b.svg";
-const imgVector5 = "http://localhost:3845/assets/840daf1a99bdc85a4dad275dc7f7ac407f081a3a.svg";
-const imgVector6 = "http://localhost:3845/assets/6c311ce39dc5bec6ba5ed1159be47d3d9638e181.svg";
-const imgVector7 = "http://localhost:3845/assets/10b13cce485e599725d5059f92e153494c334234.svg";
+const imgVector1 = "/cursors/Manager.svg";
+const imgVector2 = "/cursors/Dev.svg";
+const imgVector3 = "/cursors/Designer.svg";
+const imgVector4 = "/cursors/Founder.svg";
+const imgVector5 = "/cursors/Creator.svg";
+const imgVector6 = "/cursors/You.svg";
+const imgVector7 = "/cursors/Andy.svg";
 
 type CursorProps = {
   variant?: "Dev" | "Designer" | "Founder" | "Creator" | "Andy" | "You" | "Manager";

@@ -54,6 +54,10 @@
   --background-end-rgb: 0, 0, 0;
 }
 
+body, button {
+  cursor: url('/cursors/UserCursor.png'), auto;
+}
+
 @layer components {
   
   /* Hero text style (already partially defined in your theme) */
