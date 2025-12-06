@@ -8,12 +8,9 @@ const words = ["challenges", "frustrations", "painpoints"];
 
 export default function Hero() {
   return (
-    <div className="flex flex-col gap-[140px] items-start justify-center pb-0 relative w-full h-screen bg-brand-black">
+    <div className="flex flex-col gap-[140px] items-start justify-center pb-0 relative w-full bg-brand-black">
       {/* Headline Section */}
       <div className="relative w-full max-w-6xl">
-        {/* Background highlight for "challenges" */}
-        {/* <div className="absolute bg-brand-light-blue h-[58px] ml-[550px] mt-[62px] w-[299px] hidden lg:block" /> */}
-        
         {/* Main headline text */}
         <div className="text-hero font-bold relative text-brand-light-blue text-[32px] md:text-[40px] lg:text-[48px] leading-[1.25] lg:leading-[64px]">
           <p className="mb-0">I build software by starting</p>

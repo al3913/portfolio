@@ -32,10 +32,10 @@
   --letter-spacing-body: 0.01em; /* Adjust to your needs */
 
   /* Add your body text properties here */
-  --font-size-h2: 36px;        /* Adjust to your needs */
-  --line-height-h2: 125%;      /* Adjust to your needs */
+  --font-size-h2: 20px;        /* Adjust to your needs */
+  --line-height-h2: 150%;      /* Adjust to your needs */
   --font-weight-h2: 500;       /* Adjust to your needs */
-  --letter-spacing-h2: 0.5%; /* Adjust to your needs */
+  --letter-spacing-h2: 0.01em; /* Adjust to your needs */
   
   /* Spacing */
   --spacing-122: 122px;
