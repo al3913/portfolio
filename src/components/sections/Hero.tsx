@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import Cursor from './Cursor';
-import Typewriter from './Typewriter';
+import Cursor from '../Cursor';
+import Typewriter from '../Typewriter';
 
 const words = ["challenges", "frustrations", "painpoints"];
 

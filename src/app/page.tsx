@@ -1,6 +1,6 @@
-import Maintenance from '@/components/Maintenance';
-import Hero from '@/components/Hero';
-import AboutMe from '@/components/AboutMe';
+import Maintenance from '@/components/sections/Maintenance';
+import Hero from '@/components/sections/Hero';
+import AboutMe from '@/components/sections/AboutMe';
 
 export default function Home() {
   return (

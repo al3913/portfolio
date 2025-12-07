@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${marklMono.variable} ${ethosNova.variable}`}>
       <body
-        className="antialiased"
+        className="antialiased bg-brand-black"
       >
         {children}
       </body>
