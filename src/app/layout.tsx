@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { marklMono } from "../lib/fonts";
 import { ethosNova } from "../lib/fonts";
+import ClientWrapper from "@/components/sections/ClientWrapper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,12 +14,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en" className={`${marklMono.variable} ${ethosNova.variable}`}>
       <body
         className="antialiased bg-brand-black"
       >
-        {children}
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
     </html>
   );
