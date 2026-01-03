@@ -17,8 +17,8 @@
   --color-pal-dark-blue: #1245AD;
   
   /* Font Families */
-  --font-family-markl: var(--font-markl), monospace;
-  --font-family-ethos: var(--font-ethos), sans-serif;
+  --font-markl: var(--font-markl), monospace;
+  --font-ethos: var(--font-ethos), sans-serif;
   
   /* Typography Scales */
   --font-size-hero: 48px;
@@ -62,7 +62,7 @@ button {
   
   /* Hero text style (already partially defined in your theme) */
   .text-hero {
-    font-family: var(--font-family-markl);
+    font-family: var(--font-markl), monospace;
     font-size: var(--font-size-hero);
     line-height: var(--line-height-hero);
     font-weight: var(--font-weight-hero);
@@ -70,7 +70,7 @@ button {
   }
 
   .text-h2 {
-    font-family: var(--font-family-ethos);
+    font-family: var(--font-ethos), sans-serif;
     font-size: var(--font-size-h2);
     line-height: var(--line-height-h2);
     font-weight: var(--font-weight-h2);

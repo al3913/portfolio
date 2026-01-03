@@ -6,14 +6,19 @@ interface ExperienceCardProps {
     role: string;
     date: string;
     description: string;
+    className?: string;
 }
 
-export default function ExperienceCard(experience : ExperienceCardProps) {
+export default function ExperienceCard({className, ...experience} : ExperienceCardProps) {
     return (
-        <div className="flex flex-col">
-            <div className="flex border-y border-brand-light-blue">
-                <div className="w-[149px] h-[24px]">
+        <div className={`flex flex-col ${className} border-t border-brand-light-blue`}>
+            <div className="flex py-[40px]">
+                <div className="flex flex-row gap-[56px] justify-start items-center">
                     <Image src={experience.logo} alt={experience.company} width={149} height={24} className="h-full"/>
+                    <div className="flex flex-col">
+                        <p className="text-brand-light-blue font-markl font-bold text-[28px]">{experience.role}</p>
+                        <p className="text-white font-ethos text-[14px]">{experience.date}</p>
+                    </div>
                 </div>
             </div>
         </div>
