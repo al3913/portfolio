@@ -16,9 +16,10 @@ export default function ExperienceCard({className, ...experience} : ExperienceCa
                 <div className="flex flex-row gap-[56px] justify-start items-center">
                     <Image src={experience.logo} alt={experience.company} width={149} height={24} className="h-full"/>
                     <div className="flex flex-col">
-                        <p className="text-brand-light-blue font-markl font-bold text-[28px]">{experience.role}</p>
-                        <p className="text-white font-ethos text-[14px]">{experience.date}</p>
+                        <p className="text-brand-light-blue text-hero leading-none text-[28px]">{experience.role}</p>
+                        <p className="text-white font-ethos font-bold text-[14px]">{experience.date}</p>
                     </div>
+                    <p className="text-h2 text-white text-[16px]">{experience.description}</p>
                 </div>
             </div>
         </div>

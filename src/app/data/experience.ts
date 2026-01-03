@@ -2,7 +2,7 @@ export const experience = [
     {
       company: "UKG",
       role: "Software Engineer Intern",
-      date: "September 2025 – Present",
+      date: "September 2025 – December 2025",
       description: "Contributing to enterprise software that supports thousands of employees every day.",
       logo: "/exps/ukg.svg"
     },
