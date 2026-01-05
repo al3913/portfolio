@@ -1,6 +1,7 @@
 import Maintenance from '@/components/sections/Maintenance';
 import Hero from '@/components/sections/Hero';
 import AboutMe from '@/components/sections/AboutMe';
+import FinalCTA from '@/components/sections/FinalCTA';
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <main className="flex bg-brand-black min-h-screen flex-col pt-[310px] gap-[315px] items-center m-auto justify-start px-[60px] md:px-[120px] relative max-w-[1440px]">
           <Hero />
           <AboutMe />
+          <FinalCTA />
           {/* <Maintenance /> */}
       </main>
     </div>

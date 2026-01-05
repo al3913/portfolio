@@ -13,10 +13,9 @@ export default function Hero() {
       <div className="relative w-full max-w-6xl">
         {/* Main headline text */}
         <div className="text-hero font-bold relative text-brand-light-blue text-[32px] md:text-[40px] lg:text-[48px] leading-[1.25] lg:leading-[64px]">
-          <p className="mb-0">I build software by starting</p>
+          <p className="">I build software by starting</p>
           <p>
-            <span>with people, their </span>
-            <Typewriter words={words}/>
+            with people, their <Typewriter words={words}/>
           </p>
         </div>
       </div>

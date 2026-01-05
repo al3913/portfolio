@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 interface TypewriterProps {
   words: string[];
+  className?: string;
 }
 
-export default function Typewriter({ words }: TypewriterProps) {
+export default function Typewriter({ words, className}: TypewriterProps) {
 
     const [index, setIndex] = useState(0);
     const currentWord = words[index];
@@ -19,7 +20,7 @@ export default function Typewriter({ words }: TypewriterProps) {
 
 
     return(
-        <span key={currentWord} className="text-brand-black text-hero relative bg-brand-light-blue typewriter" style={{"--count": currentWord.length} as React.CSSProperties}>
+        <span key={currentWord} className={`text-brand-black text-hero relative bg-brand-light-blue typewriter ${className}`} style={{"--count": currentWord.length} as React.CSSProperties}>
             {currentWord}
         </span>
     )
