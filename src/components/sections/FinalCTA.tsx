@@ -18,9 +18,14 @@ export default function FinalCTA() {
                 </p>
             </div>
             <div className="flex flex-col items-center w-full gap-[40px] relative">
+                <a href="https://linkedin.com/in/andylin21" target="_blank" rel="noopener noreferrer">
                 <button className="bg-brand-light-blue px-[70px] py-[20px] rounded-[59.6px] text-hero leading-[48px]"> Let's connect </button>
+                </a>
                 <div className="absolute bottom-0 right-0"><Cursor variant="You"/></div>
-                <Typewriter className="text-h2 bg-brand-black" words={["what are you waiting for?"]}/>
+                <div className="flex gap-[16px]">
+                    <Typewriter className="text-h2 bg-brand-black" words={["what are you waiting for?"]}/>
+                    <Cursor variant="You"/>
+                </div>
             </div>
         </div>
     )
