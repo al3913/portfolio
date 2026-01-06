@@ -80,15 +80,15 @@ button {
   .typewriter{
     white-space: nowrap; /* Prevents the text from wrapping since the size isn't full width*/
     display: inline-block;
-    width: 0;
+    max-width: 0;
     animation: typing 2s steps(20) alternate infinite;
   }
 
   @keyframes typing {
-    0% { width: 0;}
-    10% { width: 0;}
-    80% { width: calc((var(--count) * 0.91ch));}
-    100% { width: calc((var(--count) * 0.91ch));}
+    0% { max-width: 0;}
+    10% { max-width: 0;}
+    80% { max-width: calc((var(--count) * 0.91ch));}
+    100% { max-width: calc((var(--count) * 0.91ch));}
   }
 
 }
