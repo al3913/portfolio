@@ -80,8 +80,11 @@ button {
   .typewriter{
     white-space: nowrap; /* Prevents the text from wrapping since the size isn't full width*/
     display: inline-block;
-    max-width: 0;
-    animation: typing 2s steps(20) alternate infinite;
+    animation: typing 2s steps(20) alternate infinite, blink 1s steps(1) infinite;
+  }
+
+  .typewriter-blink {
+    animation: typing 4s linear forwards;
   }
 
   @keyframes typing {
@@ -92,8 +95,8 @@ button {
   }
 
   @keyframes blink {
-    from {border-right: 2px solid var(--color-brand-light-blue);}
-    to {border-right: 2px solid transparent;}
+    0%{border-right-width: 1px}
+    100% {border-right-width: 0px;}
   }
 
 }
