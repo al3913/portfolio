@@ -91,5 +91,10 @@ button {
     100% { max-width: calc((var(--count) * 0.91ch));}
   }
 
+  @keyframes blink {
+    from {border-right: 2px solid var(--color-brand-light-blue);}
+    to {border-right: 2px solid transparent;}
+  }
+
 }
 

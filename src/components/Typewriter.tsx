@@ -20,7 +20,7 @@ export default function Typewriter({ words, className}: TypewriterProps) {
 
 
     return(
-        <span key={currentWord} className={`text-brand-black text-hero relative bg-brand-light-blue typewriter ${className}`} style={{"--count": currentWord.length} as React.CSSProperties}>
+        <span key={currentWord} className={`${className} text-brand-black text-hero relative bg-brand-light-blue typewriter`} style={{"--count": currentWord.length} as React.CSSProperties}>
             {currentWord}
         </span>
     )
