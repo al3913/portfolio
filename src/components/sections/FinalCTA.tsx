@@ -23,7 +23,7 @@ export default function FinalCTA() {
                 </a>
                 <div className="flex gap-[16px] items-start">
                     {/* <Typewriter className="text-h2 !bg-brand-black !text-brand-light-blue overflow-hidden" words={["what are you waiting for?"]}/> */}
-                    <p className="text-h2 text-brand-light-blue overflow-hidden typewriter-blink"> what are you waiting for?</p>
+                    <span className="text-h2 text-brand-light-blue typewriter-blink" style={{"--count": 21} as React.CSSProperties}> what are you waiting for?</span>
                     <Cursor variant="You"/>
                 </div>
             </div>

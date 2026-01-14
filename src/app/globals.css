@@ -80,23 +80,38 @@ button {
   .typewriter{
     white-space: nowrap; /* Prevents the text from wrapping since the size isn't full width*/
     display: inline-block;
-    animation: typing 2s steps(20) alternate infinite, blink 1s steps(1) infinite;
+    animation: typing 2s steps(20) alternate infinite;
   }
 
   .typewriter-blink {
-    animation: typing 4s linear forwards;
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: 4s typing 2s linear forwards;
+  }
+
+  .typewriter-blink::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    content: "";
+    border-right: 1px solid var(--color-brand-light-blue);
+    animation: blink 1s steps(1) infinite;
   }
 
   @keyframes typing {
-    0% { max-width: 0;}
-    10% { max-width: 0;}
-    80% { max-width: calc((var(--count) * 0.91ch));}
-    100% { max-width: calc((var(--count) * 0.91ch));}
+    0% { width: 0;}
+    10% { width: 0;}
+    80% { width: calc((var(--count) * 0.91ch));}
+    100% { width: calc((var(--count) * 0.91ch));}
   }
 
   @keyframes blink {
-    0%{border-right-width: 1px}
-    100% {border-right-width: 0px;}
+    50% {opacity: 0;}
   }
 
 }
