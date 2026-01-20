@@ -2,6 +2,7 @@
 
 import Cursor from "../Cursor";
 import Typewriter from "../Typewriter";
+import Image from "next/image";
 
 export default function FinalCTA() {
     return (
