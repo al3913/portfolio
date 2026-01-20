@@ -2,6 +2,11 @@ import { CodeXml, PanelsTopLeft } from "lucide-react";
 import Image from "next/image";
 
 export default function Skills() {
+
+    const toggleOpen = () => {
+        // TODO: Handler for rotating chevron + opening dropdowns
+    }
+    
     return (
         <>
             <div className="flex gap-[48px] items-center w-full ml-[-40px]">
