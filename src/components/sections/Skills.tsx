@@ -11,13 +11,11 @@ export default function Skills() {
         <>
             <div className="flex gap-[48px] items-center w-full ml-[-40px]">
                 <Image src="/icons/chevron.svg" alt="Chevron" width={64} height={64}/>
-                {/* <CodeXml color="white" size={64}/> */}
-                <h2 className="text-hero text-brand-light-blue">{'<Engineer/>'}</h2>
+                <h2 className="text-hero text-brand-light-blue">{'<'}<span className="text-[#96e1ff]">Engineer</span>{'/>'}</h2>
             </div>
             <div className="flex gap-[48px] items-center w-full ml-[-40px]">
                 <Image src="/icons/chevron.svg" alt="Chevron" width={64} height={64}/>
-                {/* <PanelsTopLeft color="white" size={64} strokeWidth={1.5}/> */}
-                <h2 className="text-hero text-brand-light-blue border-3 border-brand-light-blue p-[16px]">design</h2>
+                <h2 className="text-hero text-[#ad86ff] border-3 border-brand-light-blue p-[16px]">design</h2>
             </div>
         </>
     )
