@@ -17,13 +17,13 @@ export default function Skills() {
                 <div className="pl-[80px]">
                     <div className="flex gap-[36px]">
                         <PanelsTopLeft color="#ffffff" size={58}/>
-                        <h3 className="text-hero text-brand-light-blue">Principles</h3>
+                        <h3 className="text-hero text-brand-light-blue text-[36px]">Principles</h3>
                     </div>
                 </div>
                 <div className="pl-[80px]">
                     <div className="flex gap-[36px]">
                         <PenTool color="#ffffff" size={58}/>
-                        <h3 className="text-hero text-brand-light-blue">Tools</h3>
+                        <h3 className="text-hero text-brand-light-blue text-[36px]">Tools</h3>
                     </div>  
                 </div>    
             </div>
