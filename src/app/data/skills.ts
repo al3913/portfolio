@@ -13,6 +13,10 @@ export const designTools: SkillItem[] = [
 ]
 
 export const engineerFrontend: SkillItem[] = [
+    { icon: "/skills/engineer/frontend/react.svg", name: "React"},
+    { icon: "/skills/engineer/frontend/tailwind.svg", name: "Tailwind"},
+    { icon: "/skills/engineer/frontend/typescript.svg", name: "TypeScript"},
+    { icon: "/skills/engineer/frontend/javascript.svg", name: "JavaScript"},
 ]
 
 export const engineerBackend: SkillItem[] = [
