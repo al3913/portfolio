@@ -1,5 +1,7 @@
 import { PenTool, PanelsTopLeft } from "lucide-react";
 import Image from "next/image";
+import { designPrinciples, designTools } from "@/app/data/skills";
+import SkillList from "../SkillList";
 
 export default function Skills() {
 
@@ -18,6 +20,7 @@ export default function Skills() {
                     <div className="flex gap-[36px]">
                         <PanelsTopLeft color="#ffffff" size={58}/>
                         <h3 className="text-hero text-brand-light-blue text-[36px]">Principles</h3>
+                        <SkillList items={designPrinciples}/>
                     </div>
                 </div>
                 <div className="pl-[80px]">
