@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 // SVG assets from Figma design
 const imgVector1 = "/cursors/Manager.svg";
 const imgVector2 = "/cursors/Dev.svg";
@@ -61,11 +63,12 @@ export default function Cursor({ variant = "Andy" }: CursorProps) {
       {/* Icon/Image Section */}
       <div className="absolute bottom-[38%] left-0 right-[61.21%] top-0">
         <div className="absolute inset-[-5.11%_-6.1%_-5.11%_-6.18%]">
-          {/* Using img instead of Next Image for external localhost URLs */}
-          <img 
-            alt="" 
+          <Image
+            alt="cursor icon" 
             className="block max-w-none w-full h-full object-contain" 
             src={config.icon}
+            width={29.17}
+            height={34.16}
           />
         </div>
       </div>

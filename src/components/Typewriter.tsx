@@ -16,7 +16,7 @@ export default function Typewriter({ words, className}: TypewriterProps) {
         }, 4000);
 
         return () => clearTimeout(timeout);
-    }, [index]);
+    }, [index, words.length]);
 
 
     return(

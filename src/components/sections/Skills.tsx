@@ -5,9 +5,10 @@ import SkillList from "../SkillList";
 
 export default function Skills() {
 
-    const toggleOpen = () => {
-        // TODO: Handler for rotating chevron + opening dropdowns
-    }
+    // TODO: Handler for rotating chevron + opening dropdowns
+    // const toggleOpen = () => {
+    //
+    // }
         
     return (
         <div className="flex w-full">

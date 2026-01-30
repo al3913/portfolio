@@ -1,4 +1,4 @@
-import Maintenance from '@/components/sections/Maintenance';
+//import Maintenance from '@/components/sections/Maintenance';
 import Hero from '@/components/sections/Hero';
 import AboutMe from '@/components/sections/AboutMe';
 import FinalCTA from '@/components/sections/FinalCTA';
