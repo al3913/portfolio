@@ -18,9 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${marklMono.variable} ${ethosNova.variable}`}>
       <body
-        className="antialiased bg-brand-black"
+        className="antialiased bg-brand-black relative"
       >
         <ClientWrapper>{children}</ClientWrapper>
+        <aside className="absolute top-0 left-0 text-h2 text-[#8D98B3] text-[12px] leading-[150%] tracking-[0.02em] w-[20vw] ml-[1vw] mt-[1vw]">
+          current version is still very MVP, currently iterating day-by-day 🫡
+        </aside>
       </body>
     </html>
   );
