@@ -48,7 +48,7 @@ export default function Skills() {
                         <Terminal color="#ffffff" size={58}/>
                         <h3 className="text-hero text-brand-light-blue text-[36px]">Backend</h3>
                     </div>
-                    <SkillList items={designTools} className="pl-[90px] flex flex-col gap-[32px]"/>  
+                    <SkillList items={engineerBackend} className="pl-[90px] flex flex-col gap-[32px]"/>  
                 </div>
             </div>
         </div>

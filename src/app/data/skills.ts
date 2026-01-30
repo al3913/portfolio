@@ -20,4 +20,8 @@ export const engineerFrontend: SkillItem[] = [
 ]
 
 export const engineerBackend: SkillItem[] = [
+    { icon: "/skills/engineer/backend/java.svg", name: "Java"},
+    { icon: "/skills/engineer/backend/csharp.svg", name: "C#"},
+    { icon: "/skills/engineer/backend/python.svg", name: "Python"},
+    { icon: "/skills/engineer/backend/mongodb.svg", name: "MongoDB"},
 ]
