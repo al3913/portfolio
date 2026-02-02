@@ -1,7 +1,5 @@
 'use client';
 
-import Cursor from "../Cursor";
-
 export default function FinalCTA() {
     return (
         <div className="flex flex-col gap-[80px] justify-start w-full">
