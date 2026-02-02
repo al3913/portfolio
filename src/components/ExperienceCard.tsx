@@ -13,9 +13,9 @@ export default function ExperienceCard({className, ...experience} : ExperienceCa
     return (
         <div className={`flex flex-col ${className} border-t border-brand-light-blue`}>
             <div className="flex py-[40px]">
-                <div className="flex flex-row gap-[56px] justify-start items-start">
+                <div className="flex flex-row gap-[56px] justify-start items-center">
                     <Image src={experience.logo} alt={experience.company} width={149} height={24} className="h-[51.61px] shrink-0"/>
-                    <div className="flex flex-col h-full min-w-[410px] shrink-0">
+                    <div className="flex flex-col h-full min-w-[410px] shrink-0 gap-[6px]">
                         <p className="text-brand-light-blue text-hero leading-none text-[28px]">{experience.role}</p>
                         <p className="text-white font-ethos font-bold text-[14px]">{experience.date}</p>
                     </div>
