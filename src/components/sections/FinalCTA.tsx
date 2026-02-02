@@ -20,11 +20,7 @@ export default function FinalCTA() {
                 <a href="https://linkedin.com/in/andylin21" target="_blank" rel="noopener noreferrer">
                     <button className="bg-brand-light-blue px-[70px] py-[20px] rounded-[59.6px] text-hero leading-[48px] text-[40px]"> Let&apos;s connect </button>
                 </a>
-                <div className="flex gap-[16px] items-start">
-                    {/* <Typewriter className="text-h2 !bg-brand-black !text-brand-light-blue overflow-hidden" words={["what are you waiting for?"]}/> */}
-                    <span className="text-h2 text-brand-light-blue typewriter-blink" style={{"--count": 21} as React.CSSProperties}> what are you waiting for?</span>
-                    <Cursor variant="You"/>
-                </div>
+                <span className="text-h2 text-brand-light-blue typewriter-blink" style={{"--count": 21} as React.CSSProperties}> what are you waiting for?</span>
             </div>
         </div>
     )
