@@ -23,7 +23,7 @@ export default function Hero() {
       {/* Body Section */}
       <div className="relative w-full max-w-2xl">
         {/* Body text */}
-        <div className="text-h2 font-medium relative text-brand-light-blue text-[16px] md:text-[18px] lg:text-[20px] tracking-[0.2px] leading-[1.5] max-w-[589px]">
+        <div className="text-h2 font-medium relative text-brand-light-blue text-[16px] md:text-[18px] lg:text-[18px] tracking-[0.2px] leading-[1.5] max-w-[589px]">
           <p>
             {"The best software isn't just powerful, it feels like it was made for you. "}
             {"I focus on understanding people first, then designing and building in a way "}

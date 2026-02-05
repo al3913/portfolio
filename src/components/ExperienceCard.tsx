@@ -17,9 +17,9 @@ export default function ExperienceCard({className, ...experience} : ExperienceCa
                     <Image src={experience.logo} alt={experience.company} width={149} height={24} className="h-[51.61px] shrink-0"/>
                     <div className="flex flex-col h-full min-w-[410px] shrink-0 gap-[6px]">
                         <p className="text-brand-light-blue text-hero leading-none text-[28px]">{experience.role}</p>
-                        <p className="text-white font-ethos font-bold text-[14px]">{experience.date}</p>
+                        <p className="text-brand-light-blue font-ethos font-bold text-[14px]">{experience.date}</p>
                     </div>
-                    <p className="text-h2 text-white text-[16px] leading-[150%] tracking-[0.02em] mt-[-5px]">{experience.description}</p>
+                    <p className="text-h2 text-brand-light-blue text-[18px] leading-[150%] tracking-[0.02em] mt-[-5px]">{experience.description}</p>
                 </div>
             </div>
         </div>
