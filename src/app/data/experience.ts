@@ -17,7 +17,7 @@ export const experience = [
       company: "Baker Hughes",
       role: "Software Engineer Intern",
       date: "January 2025 – June 2025",
-      description: "Built an AI vision tool that improved defect detection by 25%, saving engineers hours of rework.",
+      description: "CV tool for video defect detection, saving engineers hours of rework and labor.",
       logo: "/exps/baker.svg"
     },
     {
