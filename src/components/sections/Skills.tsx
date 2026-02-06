@@ -7,7 +7,7 @@ export default function Skills() {
     return (
         <div className="flex w-full">
             <div className="flex flex-col gap-[32px] w-full">
-                <div className="flex gap-[32px] items-center w-full ml-[-12px]">
+                <div className="flex gap-[32px] items-center w-full ml-[-8px]">
                     <Image src="/icons/chevron.svg" alt="Chevron" width={40} height={40} className="rotate-90"/>
                     <h2 className="text-headline text-[#ad86ff] border-3 border-brand-light-blue p-[16px]">design</h2>
                 </div>
@@ -27,7 +27,7 @@ export default function Skills() {
                 </div>    
             </div>
             <div className="flex flex-col gap-[32px] w-full">
-                <div className="flex gap-[32px] items-center w-full ml-[-12px]">
+                <div className="flex gap-[32px] items-center w-full ml-[-8px]">
                     <Image src="/icons/chevron.svg" alt="Chevron" width={40} height={40} className="rotate-90"/>
                     <h2 className="text-headline text-brand-light-blue py-[19px]">{'<'}<span className="text-[#96e1ff]">Engineer</span>{'/>'}</h2>
                 </div>
