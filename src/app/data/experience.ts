@@ -10,7 +10,7 @@ export const experience = [
       company: "Hansei.GG",
       role: "Software Engineer Intern",
       date: "June 2025 – September 2025",
-      description: "Migrated site to Next.js/Webflow, cutting load times by 30% and enabling autonomous content updates.",
+      description: "Rebuilt the company website to better reflect brand identity and clarify product value.",
       logo: "/exps/hansei.svg"
     },
     {

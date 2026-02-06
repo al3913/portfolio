@@ -12,8 +12,8 @@ const SkillList = ({items, className } : Props) => {
             {
                 items.map((item, index) => (
                     <div key={index} className="flex gap-[36px]">
-                        <Image src={item.icon} width={38.14} height={38.14} alt={'icon for ' + item.name}/>
-                        <h4 className="text-h2 text-brand-light-blue text-[24px]">{item.name}</h4>
+                        <Image src={item.icon} width={21} height={21} alt={'icon for ' + item.name}/>
+                        <h4 className="text-label text-brand-light-blue">{item.name}</h4>
                     </div>
                 ))
             }

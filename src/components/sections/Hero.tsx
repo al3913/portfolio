@@ -12,7 +12,7 @@ export default function Hero() {
       {/* Headline Section */}
       <div className="relative w-full max-w-6xl">
         {/* Main headline text */}
-        <div className="text-hero font-bold relative text-brand-light-blue text-[32px] md:text-[40px] lg:text-[48px] leading-[1.25] lg:leading-[64px]">
+        <div className="text-display font-bold relative text-brand-light-blue text-[32px] md:text-[40px] lg:text-[48px] leading-[1.25] lg:leading-[64px]">
           <p className="">I build software by starting</p>
           <p>
             with people, their <Typewriter words={words}/>
@@ -23,7 +23,7 @@ export default function Hero() {
       {/* Body Section */}
       <div className="relative w-full max-w-2xl">
         {/* Body text */}
-        <div className="text-h2 font-medium relative text-brand-light-blue text-[16px] md:text-[18px] lg:text-[18px] tracking-[0.2px] leading-[1.5] max-w-[589px]">
+        <div className="text-body relative text-brand-light-blue max-w-[589px]">
           <p>
             {"The best software isn't just powerful, it feels like it was made for you. "}
             {"I focus on understanding people first, then designing and building in a way "}
@@ -32,7 +32,7 @@ export default function Hero() {
         </div>
         
         {/* Cursor component */}
-        <div className="absolute -bottom-8 md:right-25 lg:right-75">
+        <div className="absolute -bottom-8 md:right-25 lg:right-125">
           <div className="h-[50px] relative w-[66.886px]">
             <Cursor variant="Andy" />
           </div>

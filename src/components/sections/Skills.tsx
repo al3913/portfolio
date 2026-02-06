@@ -4,50 +4,44 @@ import { designPrinciples, designTools, engineerFrontend, engineerBackend } from
 import SkillList from "../SkillList";
 
 export default function Skills() {
-
-    // TODO: Handler for rotating chevron + opening dropdowns
-    // const toggleOpen = () => {
-    //
-    // }
-        
     return (
         <div className="flex w-full">
             <div className="flex flex-col gap-[32px] w-full">
                 <div className="flex gap-[32px] items-center w-full ml-[-12px]">
-                    <Image src="/icons/chevron.svg" alt="Chevron" width={64} height={64} className="rotate-90"/>
-                    <h2 className="text-hero text-[#ad86ff] border-3 border-brand-light-blue p-[16px]">design</h2>
+                    <Image src="/icons/chevron.svg" alt="Chevron" width={40} height={40} className="rotate-90"/>
+                    <h2 className="text-headline text-[#ad86ff] border-3 border-brand-light-blue p-[16px]">design</h2>
                 </div>
                 <div className="pl-[80px] flex flex-col gap-[20px]">
                     <div className="flex gap-[36px]">
-                        <PanelsTopLeft color="#ffffff" size={58}/>
-                        <h3 className="text-hero text-brand-light-blue text-[36px]">Principles</h3>
+                        <PanelsTopLeft color="#ffffff" size={30}/>
+                        <h3 className="text-title text-brand-light-blue">Principles</h3>
                     </div>
                     <SkillList items={designPrinciples} className="pl-[90px] flex flex-col gap-[32px]"/>
                 </div>
                 <div className="pl-[80px] flex flex-col gap-[20px]">
                     <div className="flex gap-[36px]">
-                        <PenTool color="#ffffff" size={58}/>
-                        <h3 className="text-hero text-brand-light-blue text-[36px]">Tools</h3>
+                        <PenTool color="#ffffff" size={30}/>
+                        <h3 className="text-title text-brand-light-blue">Tools</h3>
                     </div>
                     <SkillList items={designTools} className="pl-[90px] flex flex-col gap-[32px]"/>  
                 </div>    
             </div>
             <div className="flex flex-col gap-[32px] w-full">
                 <div className="flex gap-[32px] items-center w-full ml-[-12px]">
-                    <Image src="/icons/chevron.svg" alt="Chevron" width={64} height={64} className="rotate-90"/>
-                    <h2 className="text-hero text-brand-light-blue p-[19px]">{'<'}<span className="text-[#96e1ff]">Engineer</span>{'/>'}</h2>
+                    <Image src="/icons/chevron.svg" alt="Chevron" width={40} height={40} className="rotate-90"/>
+                    <h2 className="text-headline text-brand-light-blue p-[19px]">{'<'}<span className="text-[#96e1ff]">Engineer</span>{'/>'}</h2>
                 </div>
                 <div className="pl-[80px] flex flex-col gap-[20px]">
                     <div className="flex gap-[36px]">
-                        <AppWindow color="#ffffff" size={58}/>
-                        <h3 className="text-hero text-brand-light-blue text-[36px]">Frontend</h3>
+                        <AppWindow color="#ffffff" size={30}/>
+                        <h3 className="text-title text-brand-light-blue">Frontend</h3>
                     </div>
                     <SkillList items={engineerFrontend} className="pl-[90px] flex flex-col gap-[32px]"/>
                 </div>
                 <div className="pl-[80px] flex flex-col gap-[20px]">
                     <div className="flex gap-[36px]">
-                        <Terminal color="#ffffff" size={58}/>
-                        <h3 className="text-hero text-brand-light-blue text-[36px]">Backend</h3>
+                        <Terminal color="#ffffff" size={30}/>
+                        <h3 className="text-title text-brand-light-blue">Backend</h3>
                     </div>
                     <SkillList items={engineerBackend} className="pl-[90px] flex flex-col gap-[32px]"/>  
                 </div>
