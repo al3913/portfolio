@@ -46,6 +46,8 @@
   --width-1216: 1216px;
   --height-500: 500px;
   --max-width-1216: 1216px;
+
+  --breakpoint-laptop: 1440px;
 }
 
 :root {

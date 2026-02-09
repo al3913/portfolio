@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { marklMono } from "../lib/fonts";
 import { ethosNova } from "../lib/fonts";
-import ClientWrapper from "@/components/sections/ClientWrapper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +19,7 @@ export default function RootLayout({
       <body
         className="antialiased bg-brand-black relative"
       >
-        <ClientWrapper>{children}</ClientWrapper>
+        {children}
         <aside className="absolute top-0 left-0 text-h2 text-[#8D98B3] text-[12px] leading-[150%] tracking-[0.02em] w-[20vw] ml-[1vw] mt-[1vw]">
           current version is still very MVP, currently iterating day-by-day 🫡
         </aside>

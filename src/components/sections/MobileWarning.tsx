@@ -27,11 +27,11 @@ export default function MobileWarning({ className = '' }: MaintenanceProps) {
         className="flex flex-col gap-10 text-brand-light-blue text-center text-hero"
         data-node-id="228:115"
       >
-        <p className="text-2xl lg:text-4xl md:leading-[40px] lg:leading-[60px]">
-          This page is taking a quick break <br className="hidden md:block"/> while I fix things up.
+        <p className="text-headline">
+          {"I'm still iterating on this view right now"}
         </p>
-        <p className="text-h2 text-xl lg:text-2xl">
-          Checkout the view on PC 🙂
+        <p className="text-body">
+          Checkout the view on a bigger screen 🙂
         </p>
       </div>
     </div>

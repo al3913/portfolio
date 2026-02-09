@@ -1,4 +1,4 @@
-//import Maintenance from '@/components/sections/Maintenance';
+import MobileWarning from '@/components/sections/MobileWarning';
 import Hero from '@/components/sections/Hero';
 import AboutMe from '@/components/sections/AboutMe';
 import FinalCTA from '@/components/sections/FinalCTA';
@@ -12,7 +12,9 @@ export default function Home() {
           <AboutMe />
           <Skills />
           <FinalCTA />
-          {/* <Maintenance /> */}
+          <div className="z-100 fixed bg-brand-black inset-0 laptop:hidden">
+            <MobileWarning/>
+          </div>
       </main>
     </div>
   );
