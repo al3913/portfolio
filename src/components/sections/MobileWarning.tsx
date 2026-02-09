@@ -24,13 +24,13 @@ export default function MobileWarning({ className = '' }: MaintenanceProps) {
         data-node-id="228:113"
       />
       <div 
-        className="flex flex-col gap-10 text-brand-light-blue text-center text-hero"
+        className="flex flex-col gap-3 text-brand-light-blue text-center"
         data-node-id="228:115"
       >
-        <p className="text-headline">
+        <p className="text-title">
           {"I'm still iterating on this view right now"}
         </p>
-        <p className="text-body">
+        <p className="text-label">
           Checkout the view on a bigger screen 🙂
         </p>
       </div>
