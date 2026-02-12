@@ -13,7 +13,7 @@ const SkillList = ({items, className } : Props) => {
                 items.map((item, index) => (
                     <div key={index} className="flex gap-[18px]">
                         <Image src={item.icon} width={21} height={21} alt={'icon for ' + item.name}/>
-                        <h4 className="text-label text-brand-light-blue">{item.name}</h4>
+                        <h4 className="text-body text-brand-light-blue">{item.name}</h4>
                     </div>
                 ))
             }
