@@ -24,7 +24,7 @@ export default function Maintenance({ className = '' }: MaintenanceProps) {
         data-node-id="228:113"
       />
       <div 
-        className="flex flex-col gap-10 text-brand-light-blue text-center text-hero"
+        className="flex flex-col gap-10 text-brand-light-blue text-center"
         data-node-id="228:115"
       >
         <p className="text-display">
