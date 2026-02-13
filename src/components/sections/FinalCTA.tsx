@@ -2,10 +2,9 @@
 
 export default function FinalCTA() {
     return (
-        <div className="flex flex-col gap-[40px] justify-start w-full">
-            <div className="flex flex-col text-headline text-brand-light-blue w-full">
+        <div className="flex flex-col gap-[40px] justify-start items-center w-full">
+            <div className="flex flex-col text-headline text-brand-light-blue items-center w-full">
                 <p> If you have a problem worth solving — 
-                    <br/>
                     <span className="font-black"> big, </span> 
                     <span className="font-light"> small, </span> 
                     or in between
