@@ -103,6 +103,14 @@ button {
     letter-spacing: 6%;
   }
 
+  .text-button{
+    font-family: var(--font-markl), monospace;
+    font-size: 18px;
+    line-height: 150%;
+    font-weight: 700;
+    letter-spacing: 1%;
+  }
+
   .typewriter{
     white-space: nowrap; /* Prevents the text from wrapping since the size isn't full width*/
     display: inline-block;
