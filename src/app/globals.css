@@ -56,7 +56,7 @@
   --background-end-rgb: 0, 0, 0;
 }
 
-button {
+body, button {
   cursor: url('/cursors/UserCursor.png'), auto;
 }
 
