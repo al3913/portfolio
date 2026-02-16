@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { marklMono } from "../lib/fonts";
 import { ethosNova } from "../lib/fonts";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Andy Lin Portfolio",
@@ -23,6 +24,7 @@ export default function RootLayout({
         <aside className="absolute top-0 left-0 text-label text-[#8D98B3] text-[12px] leading-[150%] tracking-[0.02em] w-[20vw] ml-[1vw] mt-[1vw]">
           current version is still very MVP, currently iterating day-by-day 🫡
         </aside>
+        <Analytics/>
       </body>
     </html>
   );
