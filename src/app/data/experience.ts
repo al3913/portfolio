@@ -1,5 +1,12 @@
 export const experience = [
     {
+      company: "Hansei.GG",
+      role: "Design Engineer Intern",
+      date: "January 2026 – Present",
+      description: "Bridging design and engineering to build on-brand web experiences for creators and their audiences.",
+      logo: "/exps/hansei.svg"
+    },
+    {
       company: "UKG",
       role: "Software Engineer Intern",
       date: "September 2025 – December 2025",
@@ -26,13 +33,13 @@ export const experience = [
       date: "August 2023 – June 2024",
       description: "Guiding people through their fitness journey (4000+ followers & 4M views).",
       logo: "/exps/kallos.svg"
-    },
-    {
-      company: "RIT",
-      role: "CS Peer Tutor",
-      date: "February 2023 – May 2023",
-      description: "Helped 100+ students master algorithms and strengthen their programming skills.",
-      logo: "/exps/rit.svg"
     }
+    // {
+    //   company: "RIT",
+    //   role: "CS Peer Tutor",
+    //   date: "February 2023 – May 2023",
+    //   description: "Helped 100+ students master algorithms and strengthen their programming skills.",
+    //   logo: "/exps/rit.svg"
+    // }
   ];
   
