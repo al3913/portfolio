@@ -1,24 +1,30 @@
+'use client';
+
 import { SkillItem } from "@/app/types/skill";
-import Image from 'next/image'
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 type Props = {
-    items: SkillItem[]
-    className?: string
-}
+  items: SkillItem[];
+  className?: string;
+};
 
-const SkillList = ({items, className } : Props) => {
-    return (
-        <ul className={className}>
-            {
-                items.map((item, index) => (
-                    <div key={index} className="flex gap-[18px]">
-                        <Image src={item.icon} width={21} height={21} alt={'icon for ' + item.name}/>
-                        <h4 className="text-body text-brand-light-blue">{item.name}</h4>
-                    </div>
-                ))
-            }
-        </ul>
-    )
-}
+const SkillList = ({ items, className }: Props) => {
+  return (
+    <ul className={className}>
+      {items.map((item, index) => (
+        <motion.div
+          key={index}
+          className="flex gap-[18px]"
+          whileHover={{ x: 6 }}
+          transition={{ type: "spring", stiffness: 400, damping: 25 }}
+        >
+          <Image src={item.icon} width={21} height={21} alt={'icon for ' + item.name}/>
+          <h4 className="text-body text-brand-light-blue">{item.name}</h4>
+        </motion.div>
+      ))}
+    </ul>
+  );
+};
 
 export default SkillList;
