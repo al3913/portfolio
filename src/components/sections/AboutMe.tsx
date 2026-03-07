@@ -17,7 +17,7 @@ export default function AboutMe() {
                         {"I’m a software engineer who blends full-stack development with a strong focus on design and usability. Whether it’s building tools that save hours of work or creating apps that feel intuitive from the first tap, I aim for solutions that leave a lasting impact on the people who use them."}
                     </p>
                 </div>
-                <Image src="/other/About Me Photo.svg" alt="Picture of Andy" width={530} height={412}/>
+                <Image src="/other/About_Me_Photo.svg" alt="Picture of Andy" width={530} height={412}/>
             </div>
             <div className="grid grid-cols-[11px_1fr] gap-[48px]">
                 <div className="flex flex-col w-full h-full relative justify-between items-center py-[60.305px]">
