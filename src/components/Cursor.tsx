@@ -45,12 +45,12 @@ const variantConfig = {
   You: {
     icon: imgVector6,
     label: "You",
-    bgColor: "#5f8eef",
+    bgColor: "var(--color-pal-light-blue)",
   },
   Andy: {
     icon: imgVector7,
     label: "Andy",
-    bgColor: "#ccdcff",
+    bgColor: "var(--color-brand-light-blue)",
   },
 } as const;
 

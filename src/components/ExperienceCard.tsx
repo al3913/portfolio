@@ -1,4 +1,7 @@
+'use client';
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface ExperienceCardProps {
     logo: string;
@@ -9,9 +12,13 @@ interface ExperienceCardProps {
     className?: string;
 }
 
-export default function ExperienceCard({className, ...experience} : ExperienceCardProps) {
-    return (
-        <div className={`flex flex-col ${className} border-t border-brand-light-blue`}>
+export default function ExperienceCard({ className, ...experience }: ExperienceCardProps) {
+  return (
+    <motion.div
+      className={`flex flex-col ${className} border-t border-brand-light-blue`}
+      whileHover={{ x: 8 }}
+      transition={{ type: "spring", stiffness: 300, damping: 24 }}
+    >
             <div className="flex py-[40px]">
                 <div className="flex flex-row gap-[56px] justify-start items-center">
                     <Image src={experience.logo} alt={experience.company} width={149} height={24} className="h-[51.61px] shrink-0"/>
@@ -22,6 +29,6 @@ export default function ExperienceCard({className, ...experience} : ExperienceCa
                     <p className="text-body text-brand-light-blue">{experience.description}</p>
                 </div>
             </div>
-        </div>
-    )
+        </motion.div>
+  );
 }
