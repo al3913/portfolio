@@ -10,12 +10,73 @@
   /* Colors */
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-red-500: #ef4444;
-  --color-brand-black: #00000D;
-  --color-brand-light-blue: #CCDCFF;
-  --color-pal-light-blue: #5F8EEF;
-  --color-pal-dark-blue: #1245AD;
-  
+  /* Brand aliases → closest Figma palette shade (previous values in comments) */
+  --color-brand-black: var(--color-neutral-950);      /* was #00000D */
+  --color-brand-light-blue: var(--color-neutral-100); /* was #CCDCFF */
+  --color-pal-light-blue: var(--color-blue-300);      /* was #5F8EEF */
+  --color-pal-dark-blue: var(--color-blue-600);       /* was #1245AD */
+
+  /* Palette scales (from Figma "Portfolio - Personal Brand" variables) */
+  --color-neutral-50: #f0f5ff;
+  --color-neutral-100: #c4d8fd;
+  --color-neutral-200: #98bafc;
+  --color-neutral-300: #829dd4;
+  --color-neutral-400: #6d82ab;
+  --color-neutral-500: #596884;
+  --color-neutral-600: #454e61;
+  --color-neutral-700: #303642;
+  --color-neutral-800: #1d2026;
+  --color-neutral-900: #0a0b0e;
+  --color-neutral-950: #010101;
+
+  --color-red-50: #fee9e6;
+  --color-red-100: #fdc4be;
+  --color-red-200: #fc9c94;
+  --color-red-300: #eb7b74;
+  --color-red-400: #d25f59;
+  --color-red-500: #b74441;
+  --color-red-600: #9b2c2c;
+  --color-red-700: #7d1318;
+  --color-red-800: #5b050c;
+  --color-red-900: #390205;
+  --color-red-950: #1a0001;
+
+  --color-yellow-50: #feeebc;
+  --color-yellow-100: #ead38a;
+  --color-yellow-200: #d2b866;
+  --color-yellow-300: #bb9e41;
+  --color-yellow-400: #a28517;
+  --color-yellow-500: #866d11;
+  --color-yellow-600: #6b570c;
+  --color-yellow-700: #514107;
+  --color-yellow-800: #392d03;
+  --color-yellow-900: #221a01;
+  --color-yellow-950: #0d0900;
+
+  --color-green-50: #c8fed5;
+  --color-green-100: #a6e6b6;
+  --color-green-200: #87cd99;
+  --color-green-300: #67b57e;
+  --color-green-400: #499c64;
+  --color-green-500: #2c834c;
+  --color-green-600: #0f6b37;
+  --color-green-700: #095128;
+  --color-green-800: #04391a;
+  --color-green-900: #02220d;
+  --color-green-950: #000d03;
+
+  --color-blue-50: #e5effe;
+  --color-blue-100: #bbd6fd;
+  --color-blue-200: #91bcfc;
+  --color-blue-300: #6ca1f1;
+  --color-blue-400: #5088da;
+  --color-blue-500: #376fc0;
+  --color-blue-600: #2057a4;
+  --color-blue-700: #0b4087;
+  --color-blue-800: #032b62;
+  --color-blue-900: #01193e;
+  --color-blue-950: #00081d;
+
   /* Font Families */
   --font-markl: var(--font-markl), monospace;
   --font-ethos: var(--font-ethos), sans-serif;
@@ -114,7 +175,9 @@ body, button {
   .typewriter{
     white-space: nowrap; /* Prevents the text from wrapping since the size isn't full width*/
     display: inline-block;
-    animation: typing var(--duration-fast, 250ms) steps(20) alternate infinite;
+    /* 2s alternate = 4s type+erase cycle; must match the 4000ms word swap in Typewriter.tsx
+       so the word changes while the width is at 0 */
+    animation: typing 2s steps(20) alternate infinite;
   }
 
   .typewriter-blink {
@@ -123,7 +186,7 @@ body, button {
     white-space: nowrap;
     overflow: hidden;
     width: 0;
-    animation: typing var(--duration-medium, 350ms) linear forwards;
+    animation: 4s typing 2s linear forwards;
   }
 
   .typewriter-blink::after {
@@ -134,7 +197,7 @@ body, button {
     height: 100%;
     content: "";
     background-color: var(--color-brand-light-blue);
-    animation: blink var(--duration-fast, 250ms) steps(1) infinite;
+    animation: blink 1s steps(1) infinite;
   }
 
   @keyframes typing {
