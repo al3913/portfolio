@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { fadeInUp, defaultTransition } from "@/lib/animations";
+import ContactForm from "@/components/ContactForm"
 
 export default function FinalCTA() {
   const ref = useRef(null);
@@ -38,6 +39,7 @@ export default function FinalCTA() {
           Let&apos;s connect
         </motion.button>
       </a>
+      <ContactForm />
     </motion.div>
   );
 }
