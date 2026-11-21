@@ -3,6 +3,7 @@
 import { useState, useRef, type SubmitEvent } from 'react';
 
 export default function ContactForm() {
+  const pending = useRef(false);
   const [status, setStatus] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -39,28 +40,53 @@ export default function ContactForm() {
     }
   }
 
+  const mockPending = (e: SubmitEvent) => {
+    e.preventDefault();
+    if (pending.current) {
+      return;
+    }
+
+    pending.current = true;
+    setStatus("Sending...");
+    setTimeout(() => {
+      pending.current = false;
+      setStatus("Submitted");
+    }, 5000);
+  }
+
+  const shared = {
+    disabled: pending.current,
+    required: true,
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col self-stretch items-start gap-4 ">
+    <form onSubmit={mockPending} className="flex flex-col self-stretch items-start gap-4 ">
       <input
         className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2 w-full"
         type="text" value={name} name="name"
         onChange={(e) => setName(e.target.value)}
         placeholder="your name"
-        required />
+        {...shared}
+      />
       <input
         className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2 w-full"
         type="email" value={email} name="email"
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
-        required />
+        {...shared}
+      />
       <textarea
         className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2 resize-none w-full"
         value={message} name="message"
         onChange={(e) => setMessage(e.target.value)}
         placeholder="hey im pretty coool and I think you're pretty coool, lets chat!"
-        required />
+        {...shared}
+      />
       <div className="flex items-center gap-3">
-        <button className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2"> abcde </button>
+        <button
+          className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2"
+          disabled={pending.current}
+        > Send </button>
         <span className="text-neutral-100 break-all">{status}</span>
       </div>
     </form>
