@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated icons (scripts/build-icons.mjs)
+/src/icons/iconoir.ts

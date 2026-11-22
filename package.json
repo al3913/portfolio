@@ -6,13 +6,19 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "icons": "node scripts/build-icons.mjs",
+    "predev": "npm run icons",
+    "prebuild": "npm run icons"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.35.0",
+    "iconoir": "^7.12.2",
+    "iconoir-react": "^7.12.2",
     "lucide-react": "^0.562.0",
+    "morphicons": "^2.0.2",
     "next": "^16.1.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
@@ -20,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@iconify-json/iconoir": "^1.2.12",
     "@tailwindcss/postcss": "^4.1.10",
     "@types/node": "^20",
     "@types/react": "19.2.13",

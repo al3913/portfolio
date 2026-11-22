@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useRef, type SubmitEvent } from 'react';
+import { MorphIcon } from "morphicons/react";
+import { Mail, Xmark, ICONOIR_STROKE_WIDTH } from "@/icons/iconoir";
 
 export default function ContactForm() {
   const pending = useRef(false);
@@ -86,7 +88,9 @@ export default function ContactForm() {
         <button
           className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2"
           disabled={pending.current}
-        > Send </button>
+        >
+          <MorphIcon icon={!pending.current ? Mail : Xmark} strokeWidth={ICONOIR_STROKE_WIDTH} />
+        </button>
         <span className="text-neutral-100 break-all">{status}</span>
       </div>
     </form>
