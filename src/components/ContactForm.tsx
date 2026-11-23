@@ -20,7 +20,7 @@ export default function ContactForm() {
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    formData.append("access_key", "90cd1cd8-4974-40fc-afb2-e1cae956bc2a");
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY!);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -62,7 +62,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={mockPending} className="flex flex-col self-stretch items-start gap-4 ">
+    <form onSubmit={handleSubmit} className="flex flex-col self-stretch items-start gap-4 ">
       <input
         className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2 w-full"
         type="text" value={name} name="name"
