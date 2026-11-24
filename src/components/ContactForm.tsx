@@ -5,7 +5,8 @@ import { MorphIcon } from "morphicons/react";
 import { Mail, Xmark, ICONOIR_STROKE_WIDTH } from "@/icons/iconoir";
 
 export default function ContactForm() {
-  const pending = useRef(false);
+  const inFlight = useRef(false);
+  const [pending, setPending] = useState(false);
   const [status, setStatus] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,6 +20,13 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
+    if (inFlight.current) {
+      return;
+    }
+
+    inFlight.current = true;
+    setPending(true);
+    setStatus("Sending...");
     const formData = new FormData(e.target);
     formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY!);
 
@@ -35,34 +43,40 @@ export default function ContactForm() {
         setStatus("Message sent!");
         return;
       }
-      throw new Error("Something went wrong");
+      throw new Error(data.message);
     }
     catch (error) {
       setStatus(error instanceof Error ? error.message : "Submission failed");
+    }
+    finally {
+      inFlight.current = false;
+      setPending(false);
     }
   }
 
   const mockPending = (e: SubmitEvent) => {
     e.preventDefault();
-    if (pending.current) {
+    if (inFlight.current) {
       return;
     }
 
-    pending.current = true;
+    inFlight.current = true;
+    setPending(true);
     setStatus("Sending...");
     setTimeout(() => {
-      pending.current = false;
+      inFlight.current = false;
       setStatus("Submitted");
+      setPending(false);
     }, 5000);
   }
 
   const shared = {
-    disabled: pending.current,
+    disabled: pending,
     required: true,
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col self-stretch items-start gap-4 ">
+    <form onSubmit={mockPending} className="flex flex-col self-stretch items-start gap-4 ">
       <input
         className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2 w-full"
         type="text" value={name} name="name"
@@ -87,9 +101,9 @@ export default function ContactForm() {
       <div className="flex items-center gap-3">
         <button
           className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2"
-          disabled={pending.current}
+          disabled={pending}
         >
-          <MorphIcon icon={!pending.current ? Mail : Xmark} strokeWidth={ICONOIR_STROKE_WIDTH} />
+          <MorphIcon icon={!pending ? Mail : Xmark} strokeWidth={ICONOIR_STROKE_WIDTH} />
         </button>
         <span className="text-neutral-100 break-all">{status}</span>
       </div>

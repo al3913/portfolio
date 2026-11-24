@@ -113,8 +113,10 @@
   --background-end-rgb: 0, 0, 0;
 }
 
-body, button {
-  cursor: url('/cursors/UserCursor.png'), auto;
+@layer base {
+  body, button {
+    cursor: url('/cursors/UserCursor.png'), auto;
+  }
 }
 
 @layer components {
