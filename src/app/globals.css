@@ -117,6 +117,10 @@
   body, button {
     cursor: url('/cursors/UserCursor.png'), auto;
   }
+
+  input:disabled, button:disabled, textarea:disabled  {
+    cursor: not-allowed;
+  }
 }
 
 @layer components {
