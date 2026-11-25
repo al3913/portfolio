@@ -4,18 +4,21 @@ import { useState, useRef, type SubmitEvent } from 'react';
 import { MorphIcon } from "morphicons/react";
 import { Mail, Send, ICONOIR_STROKE_WIDTH } from "@/icons/iconoir";
 
+type Contact = {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export default function ContactForm() {
+  const form = useRef(null);
   const inFlight = useRef(false);
   const [pending, setPending] = useState(false);
   const [status, setStatus] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [contact, setContact] = useState<Contact>({ name: "", email: "", message: "" });
 
   const clearInputs = () => {
-    setName("");
-    setEmail("");
-    setMessage("");
+    setContact({ name: "", email: "", message: "" });
   }
 
   const handleSubmit = async (e: SubmitEvent) => {
@@ -52,7 +55,7 @@ export default function ContactForm() {
       inFlight.current = false;
       setPending(false);
     }
-  }
+  };
 
   const mockPending = (e: SubmitEvent) => {
     e.preventDefault();
@@ -67,46 +70,55 @@ export default function ContactForm() {
       inFlight.current = false;
       setStatus("Submitted");
       setPending(false);
+      clearInputs();
     }, 5000);
+  };
+
+  const handleChange = (inputName: keyof Contact, value: string) => {
+    setContact((contact) => ({ ...contact, [inputName]: value }))
   }
+
 
   const shared = {
     disabled: pending,
     required: true,
-  }
+  };
 
   return (
-    <form onSubmit={mockPending} className="flex flex-col self-stretch items-start gap-4 ">
+    <form ref={form} onSubmit={mockPending} className="flex flex-col self-stretch items-start gap-4 ">
       <label className="w-full text-neutral-100">
         name
         <input
           className="text-neutral-900 bg-neutral-100 border border-neutral-500 rounded-2xl p-2 w-full transition duration-500 motion-reduce:transition-none disabled:opacity-40"
-          type="text" value={name} name="name"
-          onChange={(e) => setName(e.target.value)}
+          type="text" value={contact.name} name="name"
+          onChange={(e) => handleChange("name", e.currentTarget.value)}
           placeholder="your name"
           {...shared}
         />
       </label>
+      <span className="hidden">put your name down!</span>
       <label className="w-full text-neutral-100">
         email
         <input
           className="text-neutral-900 bg-neutral-100 border border-neutral-500 rounded-2xl p-2 w-full transition duration-500 motion-reduce:transition-none disabled:opacity-40"
-          type="email" value={email} name="email"
-          onChange={(e) => setEmail(e.target.value)}
+          type="email" value={contact.email} name="email"
+          onChange={(e) => handleChange("email", e.currentTarget.value)}
           placeholder="your@email.com"
           {...shared}
         />
       </label>
+      <span className="hidden">put in a valid email address!</span>
       <label className="w-full text-neutral-100">
         message
         <textarea
           className="text-neutral-900 bg-neutral-100 border border-neutral-500 rounded-2xl p-2 resize-none w-full transition duration-500 motion-reduce:transition-none disabled:opacity-40"
-          value={message} name="message"
-          onChange={(e) => setMessage(e.target.value)}
+          value={contact.message} name="message"
+          onChange={(e) => handleChange("message", e.currentTarget.value)}
           placeholder="hey im pretty coool and I think you're pretty coool, lets chat!"
           {...shared}
         />
       </label>
+      <span className="hidden">don't forget your message!</span>
 
       <div className="flex items-center gap-3">
         <button
