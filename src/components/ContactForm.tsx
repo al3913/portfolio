@@ -112,11 +112,13 @@ export default function ContactForm() {
         <button
           className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2"
           disabled={pending}
+          aria-busy={pending || undefined}
+          aria-label="Send Message"
         >
-          <MorphIcon icon={!pending ? Mail : Send} strokeWidth={ICONOIR_STROKE_WIDTH} />
+          <MorphIcon icon={pending ? Mail : Send} strokeWidth={ICONOIR_STROKE_WIDTH} />
         </button>
-        <span className="text-neutral-100 break-all">{status}</span>
+        <span className="text-neutral-100 break-all" role="status" aria-atomic="true">{status}</span>
       </div>
-    </form>
+    </form >
   );
 }
