@@ -80,7 +80,7 @@ export default function ContactForm() {
       <label className="w-full text-neutral-100">
         name
         <input
-          className="text-neutral-900 bg-neutral-100 border border-neutral-500 rounded-2xl p-2 w-full"
+          className="text-neutral-900 bg-neutral-100 border border-neutral-500 rounded-2xl p-2 w-full transition duration-500 motion-reduce:transition-none disabled:opacity-40"
           type="text" value={name} name="name"
           onChange={(e) => setName(e.target.value)}
           placeholder="your name"
@@ -90,7 +90,7 @@ export default function ContactForm() {
       <label className="w-full text-neutral-100">
         email
         <input
-          className="text-neutral-900 bg-neutral-100 border border-neutral-500 rounded-2xl p-2 w-full"
+          className="text-neutral-900 bg-neutral-100 border border-neutral-500 rounded-2xl p-2 w-full transition duration-500 motion-reduce:transition-none disabled:opacity-40"
           type="email" value={email} name="email"
           onChange={(e) => setEmail(e.target.value)}
           placeholder="your@email.com"
@@ -100,7 +100,7 @@ export default function ContactForm() {
       <label className="w-full text-neutral-100">
         message
         <textarea
-          className="text-neutral-900 bg-neutral-100 border border-neutral-500 rounded-2xl p-2 resize-none w-full"
+          className="text-neutral-900 bg-neutral-100 border border-neutral-500 rounded-2xl p-2 resize-none w-full transition duration-500 motion-reduce:transition-none disabled:opacity-40"
           value={message} name="message"
           onChange={(e) => setMessage(e.target.value)}
           placeholder="hey im pretty coool and I think you're pretty coool, lets chat!"
@@ -110,15 +110,15 @@ export default function ContactForm() {
 
       <div className="flex items-center gap-3">
         <button
-          className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2"
-          disabled={pending}
+          className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2 transition duration-500 motion-reduce:transition-none aria-disabled:opacity-40"
+          aria-disabled={pending}
           aria-busy={pending || undefined}
-          aria-label="Send Message"
+          aria-label={pending ? "Sending Message..." : "Send Message"}
         >
-          <MorphIcon icon={pending ? Mail : Send} strokeWidth={ICONOIR_STROKE_WIDTH} />
+          <MorphIcon icon={pending ? Mail : Send} strokeWidth={ICONOIR_STROKE_WIDTH} spring="smooth" reducedMotion='user' />
         </button>
         <span className="text-neutral-100 break-all" role="status" aria-atomic="true">{status}</span>
       </div>
-    </form >
+    </form>
   );
 }
