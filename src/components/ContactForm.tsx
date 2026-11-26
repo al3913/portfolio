@@ -11,14 +11,39 @@ type Contact = {
 }
 
 export default function ContactForm() {
-  const form = useRef(null);
+  const form = useRef<HTMLFormElement>(null);
   const inFlight = useRef(false);
   const [pending, setPending] = useState(false);
   const [status, setStatus] = useState("");
+  const [errors, setErrors] = useState<Contact>({ name: "", email: "", message: "" });
   const [contact, setContact] = useState<Contact>({ name: "", email: "", message: "" });
 
   const clearInputs = () => {
     setContact({ name: "", email: "", message: "" });
+  }
+
+  const validate = (field: keyof Contact, value: string): boolean => {
+    if (!value.trim()) {
+      setErrors((errors) => ({ ...errors, [field]: `${field.charAt(0).toUpperCase() + field.slice(1)} is required` }))
+      return false;
+    }
+    if (field === "email") {
+      const emailField = form.current?.elements.namedItem("email") as HTMLInputElement;
+      if (emailField?.validity.typeMismatch) {
+        setErrors((errors) => ({ ...errors, [field]: `Enter a valid ${field}` }))
+        return false;
+      }
+    }
+    setErrors((errors) => ({ ...errors, [field]: `` }))
+    return true;
+  }
+
+  const checkInputs = () => {
+    let pass = true;
+    for (const fieldInput of Object.keys(contact) as (keyof Contact)[]) {
+      pass = validate(fieldInput, contact[fieldInput]) && pass;
+    }
+    return pass;
   }
 
   const handleSubmit = async (e: SubmitEvent) => {
@@ -26,6 +51,8 @@ export default function ContactForm() {
     if (inFlight.current) {
       return;
     }
+
+    if (!checkInputs()) return;
 
     const formData = new FormData(e.target);
     formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY!);
@@ -63,6 +90,8 @@ export default function ContactForm() {
       return;
     }
 
+    if (!checkInputs()) return;
+
     inFlight.current = true;
     setPending(true);
     setStatus("Sending...");
@@ -78,14 +107,13 @@ export default function ContactForm() {
     setContact((contact) => ({ ...contact, [inputName]: value }))
   }
 
-
   const shared = {
     disabled: pending,
     required: true,
   };
 
   return (
-    <form ref={form} onSubmit={mockPending} className="flex flex-col self-stretch items-start gap-4 ">
+    <form ref={form} noValidate onSubmit={mockPending} className="flex flex-col self-stretch items-start gap-4 ">
       <label className="w-full text-neutral-100">
         name
         <input
@@ -96,7 +124,7 @@ export default function ContactForm() {
           {...shared}
         />
       </label>
-      <span className="hidden">put your name down!</span>
+      <span className="text-red-200">{errors.name}</span>
       <label className="w-full text-neutral-100">
         email
         <input
@@ -107,7 +135,7 @@ export default function ContactForm() {
           {...shared}
         />
       </label>
-      <span className="hidden">put in a valid email address!</span>
+      <span className="text-red-200">{errors.email}</span>
       <label className="w-full text-neutral-100">
         message
         <textarea
@@ -118,7 +146,7 @@ export default function ContactForm() {
           {...shared}
         />
       </label>
-      <span className="hidden">don't forget your message!</span>
+      <span className="text-red-200">{errors.message}</span>
 
       <div className="flex items-center gap-3">
         <button
