@@ -35,6 +35,8 @@ export default function ContactForm() {
     setContact(EMPTY_CONTACT);
   }
 
+  const submitDisabled = !Object.values(errors).every((val) => val === "") || Object.values(contact).every((val) => val === "");
+
   const validate = (field: keyof Contact, value: string): boolean => {
     if (!value.trim()) {
       setErrors((errors) => ({ ...errors, [field]: `${field.charAt(0).toUpperCase() + field.slice(1)} is required` }))
@@ -64,9 +66,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: SubmitEvent) => {
     e.preventDefault();
-    if (inFlight.current) {
-      return;
-    }
+    if (submitDisabled || inFlight.current || !checkInputs()) return;
 
     if (!checkInputs()) return;
 
@@ -164,7 +164,7 @@ export default function ContactForm() {
       <div className="flex items-center gap-3">
         <button
           className="bg-neutral-100 border border-neutral-500 rounded-2xl p-2 transition duration-500 motion-reduce:transition-none aria-disabled:opacity-40"
-          aria-disabled={pending}
+          aria-disabled={pending || submitDisabled}
           aria-busy={pending || undefined}
           aria-label={pending ? "Sending Message..." : "Send Message"}
         >

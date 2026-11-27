@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint",
     "icons": "node scripts/build-icons.mjs",
     "predev": "npm run icons",
     "prebuild": "npm run icons"
@@ -25,7 +25,6 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
     "@iconify-json/iconoir": "^1.2.12",
     "@tailwindcss/postcss": "^4.1.10",
     "@types/node": "^20",
