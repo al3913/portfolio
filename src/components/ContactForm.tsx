@@ -59,7 +59,7 @@ export default function ContactForm() {
       }
     }
     if (first) inputToFocus.current = form.current?.elements.namedItem(first) as HTMLInputElement;
-    return !!first;
+    return first ? false : true;
   }
 
   const handleSubmit = async (e: SubmitEvent) => {
