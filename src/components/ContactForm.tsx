@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, type SubmitEvent } from 'react';
+import { useEffect, useId, useState, useRef, type SubmitEvent } from 'react';
 import { MorphIcon } from "morphicons/react";
 import { Mail, Send, ICONOIR_STROKE_WIDTH } from "@/icons/iconoir";
 
@@ -10,16 +10,29 @@ type Contact = {
   message: string;
 }
 
+const EMPTY_CONTACT: Contact = {
+  name: "",
+  email: "",
+  message: "",
+}
+
 export default function ContactForm() {
+  const id = useId();
   const form = useRef<HTMLFormElement>(null);
   const inFlight = useRef(false);
+  const inputToFocus = useRef<HTMLElement>(null);
   const [pending, setPending] = useState(false);
   const [status, setStatus] = useState("");
-  const [errors, setErrors] = useState<Contact>({ name: "", email: "", message: "" });
-  const [contact, setContact] = useState<Contact>({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState<Contact>(EMPTY_CONTACT);
+  const [contact, setContact] = useState<Contact>(EMPTY_CONTACT);
+
+  useEffect(() => {
+    inputToFocus.current?.focus();
+    inputToFocus.current = null;
+  }, [errors])
 
   const clearInputs = () => {
-    setContact({ name: "", email: "", message: "" });
+    setContact(EMPTY_CONTACT);
   }
 
   const validate = (field: keyof Contact, value: string): boolean => {
@@ -39,11 +52,14 @@ export default function ContactForm() {
   }
 
   const checkInputs = () => {
-    let pass = true;
+    let first = null;
     for (const fieldInput of Object.keys(contact) as (keyof Contact)[]) {
-      pass = validate(fieldInput, contact[fieldInput]) && pass;
+      if (!validate(fieldInput, contact[fieldInput])) {
+        if (!first) first = fieldInput;
+      }
     }
-    return pass;
+    if (first) inputToFocus.current = form.current?.elements.namedItem(first) as HTMLInputElement;
+    return !!first;
   }
 
   const handleSubmit = async (e: SubmitEvent) => {
@@ -60,51 +76,42 @@ export default function ContactForm() {
     inFlight.current = true;
     setPending(true);
     setStatus("Sending...");
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData
-      });
+    setTimeout(async () => {
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
 
-      const data = await response.json();
+        if (!response.ok) throw new Error(`Request failed ${response.status}`);
 
-      if (data.success) {
-        clearInputs();
-        setStatus("Message sent!");
-        return;
+        const data = await response.json();
+
+        if (data.success) {
+          clearInputs();
+          setStatus("Message sent!");
+          return;
+        }
+
+        throw new Error(data?.message ?? "Something went wrong");
+
       }
-      throw new Error(data.message ?? "Something went wrong");
-    }
-    catch (error) {
-      setStatus(error instanceof Error ? error.message : "Submission failed");
-    }
-    finally {
-      inFlight.current = false;
-      setPending(false);
-    }
-  };
-
-  const mockPending = (e: SubmitEvent) => {
-    e.preventDefault();
-    if (inFlight.current) {
-      return;
-    }
-
-    if (!checkInputs()) return;
-
-    inFlight.current = true;
-    setPending(true);
-    setStatus("Sending...");
-    setTimeout(() => {
-      inFlight.current = false;
-      setStatus("Submitted");
-      setPending(false);
-      clearInputs();
-    }, 5000);
+      catch (error) {
+        setStatus(error instanceof Error ? error.message : "Submission failed");
+      }
+      finally {
+        inFlight.current = false;
+        setPending(false);
+      }
+    }, 2000);
   };
 
   const handleChange = (inputName: keyof Contact, value: string) => {
+    setStatus("");
     setContact((contact) => ({ ...contact, [inputName]: value }))
+    if (errors[inputName]) {
+      validate(inputName, value);
+    }
   }
 
   const shared = {
@@ -113,7 +120,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form ref={form} noValidate onSubmit={mockPending} className="flex flex-col self-stretch items-start gap-4 ">
+    <form ref={form} noValidate onSubmit={handleSubmit} className="flex flex-col self-stretch items-start gap-4 ">
       <label className="w-full text-neutral-100">
         name
         <input
@@ -121,10 +128,12 @@ export default function ContactForm() {
           type="text" value={contact.name} name="name"
           onChange={(e) => handleChange("name", e.currentTarget.value)}
           placeholder="your name"
+          aria-invalid={errors["name"] ? true : undefined}
+          aria-describedby={errors["name"] ? `${id}-name` : undefined}
           {...shared}
         />
       </label>
-      <span className="text-red-200">{errors.name}</span>
+      <span id={`${id}-name`} className="text-red-200">{errors["name"]}</span>
       <label className="w-full text-neutral-100">
         email
         <input
@@ -132,10 +141,12 @@ export default function ContactForm() {
           type="email" value={contact.email} name="email"
           onChange={(e) => handleChange("email", e.currentTarget.value)}
           placeholder="your@email.com"
+          aria-invalid={errors["email"] ? true : undefined}
+          aria-describedby={errors["email"] ? `${id}-email` : undefined}
           {...shared}
         />
       </label>
-      <span className="text-red-200">{errors.email}</span>
+      <span id={`${id}-email`} className="text-red-200">{errors["email"]}</span>
       <label className="w-full text-neutral-100">
         message
         <textarea
@@ -143,10 +154,12 @@ export default function ContactForm() {
           value={contact.message} name="message"
           onChange={(e) => handleChange("message", e.currentTarget.value)}
           placeholder="hey im pretty coool and I think you're pretty coool, lets chat!"
+          aria-invalid={errors["message"] ? true : undefined}
+          aria-describedby={errors["message"] ? `${id}-message` : undefined}
           {...shared}
         />
       </label>
-      <span className="text-red-200">{errors.message}</span>
+      <span id={`${id}-message`} className="text-red-200">{errors["message"]}</span>
 
       <div className="flex items-center gap-3">
         <button
